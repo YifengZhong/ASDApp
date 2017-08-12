@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.UpdateCommand;
 import application.User;
 import framework.Facade.UserAccessFacade;
 import framework.Memento.CareTaker;
 import framework.Memento.Originator;
+import framework.command.Command;
+import framework.command.CommandManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +21,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-//import storage.UserAccessFacade;
 
 public class UserInfoController implements Initializable {
 	@FXML
@@ -118,6 +120,11 @@ public class UserInfoController implements Initializable {
 				gender.clear();
 				address.clear();
 				updateTable();
+				Command command = new UpdateCommand();
+				CommandManager manager = CommandManager.getInstance();
+				manager.setCommand(command);
+				manager.invokeCommand();
+
 			}
 	}
 	public void onReturn(ActionEvent event) throws IOException {

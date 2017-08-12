@@ -2,7 +2,7 @@ target/*
 bin/*
 BankingProject.iml
 
-
+ASDInputSystem/src/storage/*
 
 /bin/
 .idea/*
