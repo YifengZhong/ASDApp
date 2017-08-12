@@ -1,0 +1,10 @@
+target/*
+bin/*
+BankingProject.iml
+
+
+
+/bin/
+.idea/*
+*.class
+*.txt
