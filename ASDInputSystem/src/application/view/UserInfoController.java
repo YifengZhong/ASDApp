@@ -21,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import util.framework.Adaptor;
 
 public class UserInfoController implements Initializable {
 	@FXML
@@ -120,6 +121,13 @@ public class UserInfoController implements Initializable {
 				gender.clear();
 				address.clear();
 				updateTable();
+// Use the Log Framework to record the save action and the User's information.
+				util.framework.Target adaptor = new Adaptor();
+				adaptor.configLog(1, 1);
+				String logInfo = "Save the user's information : [ UseID : " + id.getText() + " LastName: " +
+						lastName.getText() + " FirstName: " + firstName.getText() + " Gender: "+ gender.getText()+" Address: "+ address.getText()+" ]";
+				adaptor.setLog(logInfo);
+
 				Command command = new UpdateCommand();
 				CommandManager manager = CommandManager.getInstance();
 				manager.setCommand(command);
